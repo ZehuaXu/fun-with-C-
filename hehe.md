@@ -40,3 +40,33 @@ template<typename T> struct enable_if<true, T> { typedef T type; };
 
 从上面的代码可以看到，在 condition 为真的时候，由于偏特化机制，第二个结构体模板明显是一个更好的匹配，所以 std::enable\_if&lt;&gt;::type 就是有效的。当 condition 为假的时候，只有第一个结构体模板能够匹配，所以 std::enable\_if&lt;&gt;::type 是无效的，会被丢弃。
 
+```
+// enable_if example: two ways of using enable_if
+#include <iostream>
+#include <type_traits>
+
+// 1. the return type (bool) is only valid if T is an integral type:
+template <class T>
+typename std::enable_if<std::is_integral<T>::value,bool>::type
+  is_odd (T i) {return bool(i%2);}
+
+// 2. the second template argument is only valid if T is an integral type:
+template < class T,
+           class = typename std::enable_if<std::is_integral<T>::value>::type>
+bool is_even (T i) {return !bool(i%2);}
+
+int main() {
+
+  short int i = 1;    // code does not compile if type of i is not integral
+
+  std::cout << std::boolalpha;
+  std::cout << "i is odd: " << is_odd(i) << std::endl;
+  std::cout << "i is even: " << is_even(i) << std::endl;
+
+  return 0;
+}
+
+```
+
+
+
