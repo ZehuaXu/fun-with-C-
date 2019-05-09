@@ -14,7 +14,8 @@ SFINAE:
 
 ```
 long multiply(int i, int j) { return i * j; }
-template <class T> typename T::multiplication_result multiply(T t1, T t2)
+template <class T> 
+typename T::multiplication_result multiply(T t1, T t2)
 {
     return t1 * t2;
 }
