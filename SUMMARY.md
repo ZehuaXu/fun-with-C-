@@ -2,6 +2,6 @@
 
 * [Introduction](README.md)
 * [First Chapter](chapter1.md)
-* [hehe](hehe.md)
+* [enable\_if](hehe.md)
 * [test sync](test-sync.md)
 
