@@ -12,17 +12,15 @@ SFINAE:
 
 如下代码所示：
 
-
-
 ```
 long multiply(int i, int j) { return i * j; }
 template <class T> typename T::multiplication_result multiply(T t1, T t2)
 {
-return t1 * t2;
+    return t1 * t2;
 }
 int main(void)
 {
-multiply(4, 5);
+    multiply(4, 5);
 }
 ```
 
