@@ -27,10 +27,6 @@ int main(void)
 
 main 函数调用 multiply 会使编译器会尽可能去匹配所有候选函数，虽然第一个 multiply 函数明显是较优的匹配，但是为了得到一个最精确的匹配，编译器依然会尝试去匹配剩下的候选函数，此时就会去推导 第二个multiply 函数，中间在参数推导的过程中出现了一个无效的类型 int::multiplication\_result ，但是因为 SFINAE 原则并不会报错。
 
-
-
-
-
 #### std::enable\_if&lt;&gt; 的实现
 
 前面我们在介绍 std::enable\_if 的时候提到，如果 condition 不满足的话，会生成一个无效的类型，此处由于 SFINAE 机制的存在，只要 call 存在一个匹配的话，就不会报错（只是简单的丢弃该函数）。
@@ -43,14 +39,4 @@ template<typename T> struct enable_if<true, T> { typedef T type; };
 ```
 
 从上面的代码可以看到，在 condition 为真的时候，由于偏特化机制，第二个结构体模板明显是一个更好的匹配，所以 std::enable\_if&lt;&gt;::type 就是有效的。当 condition 为假的时候，只有第一个结构体模板能够匹配，所以 std::enable\_if&lt;&gt;::type 是无效的，会被丢弃。
-
---------------------- 
-
-作者：电影旅行敲代码 
-
-来源：CSDN 
-
-原文：https://blog.csdn.net/dashuniuniu/article/details/51705874 
-
-版权声明：本文为博主原创文章，转载请附上博文链接！
 
