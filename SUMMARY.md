@@ -4,5 +4,5 @@
 * [First Chapter](chapter1.md)
 * [enable\_if](hehe.md)
 * [test sync](test-sync.md)
-* [everyday note](everyday-not.md)
+* [static\_assert](everyday-not.md)
 
