@@ -4,3 +4,15 @@ static\_assert关键字
 
 
 
+
+
+constexpr修饰
+
+const的目的是通过编译器保证对象的常量性，强制编译器将可能违背const对象的常量视为error。
+
+
+
+
+
+std::numeric\_limits
+
